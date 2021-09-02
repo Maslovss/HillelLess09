@@ -101,9 +101,10 @@
     "nsgId": "[resourceId(resourceGroup().name, 'Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroupName'))]",
     "vnetId": {
       "new": "[resourceId('Microsoft.Network/virtualNetworks',parameters('virtualNetworkName'))]",
-      "existing": "[resourceId(parameters('virtualNetworkResourceGroup'),'Microsoft.Network/virtualNetworks',parameters('virtualNetworkName'))]"
+      "existing": "[resourceId(resourceGroup().name,'Microsoft.Network/virtualNetworks',parameters('virtualNetworkName'))]"
     },
     "subnetId": "[concat(variables('vnetId')[parameters('virtualNetworkNewOrExisting')],'/subnets/',parameters('subnetName'))]",
+    "storageAccountId": "[resourceId(parameters('omsWorkSpaceResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]",
     "storageContainerUri": "[concat(concat('https://', parameters('storageAccountName'), '.blob.core.windows.net/'), 'vhds/')]",
     "linuxConfiguration": {
       "disablePasswordAuthentication": true,
@@ -190,12 +191,6 @@
       "sku": {
         "name": "[parameters('publicIpAddressSku')]"
       }
-    },
-    {
-      "name": "[parameters('storageAccountName')]",
-      "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2019-04-01",
-      "location": "[parameters('location')]"
     },
     {
       "name": "[parameters('virtualMachineName')]",
