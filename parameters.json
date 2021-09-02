@@ -1,89 +1,93 @@
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "location": {
-            "value": "eastus"
-        },
-        "networkInterfaceName": {
-            "value": "zasd452"
-        },
-        "networkSecurityGroupName": {
-            "value": "zasd-nsg"
-        },
-        "networkSecurityGroupRules": {
-            "value": [
-                {
-                    "name": "SSH",
-                    "properties": {
-                        "priority": 300,
-                        "protocol": "TCP",
-                        "access": "Allow",
-                        "direction": "Inbound",
-                        "sourceAddressPrefix": "*",
-                        "sourcePortRange": "*",
-                        "destinationAddressPrefix": "*",
-                        "destinationPortRange": "22"
-                    }
-                }
-            ]
-        },
-        "subnetName": {
-            "value": "default"
-        },
-        "virtualNetworkName": {
-            "value": "l10-vnet"
-        },
-        "addressPrefixes": {
-            "value": [
-                "10.2.0.0/16"
-            ]
-        },
-        "subnets": {
-            "value": [
-                {
-                    "name": "default",
-                    "properties": {
-                        "addressPrefix": "10.2.0.0/24"
-                    }
-                }
-            ]
-        },
-        "publicIpAddressName": {
-            "value": "zasd-ip"
-        },
-        "publicIpAddressType": {
-            "value": "Dynamic"
-        },
-        "publicIpAddressSku": {
-            "value": "Basic"
-        },
-        "virtualMachineName": {
-            "value": "zasd"
-        },
-        "virtualMachineComputerName": {
-            "value": "zasd"
-        },
-        "virtualMachineRG": {
-            "value": "l10"
-        },
-        "diskNameSalt": {
-            "value": "20210902194307"
-        },
-        "storageAccountName": {
-            "value": "l10disks"
-        },
-        "storageAccountType": {
-            "value": "Premium_LRS"
-        },
-        "storageAccountKind": {
-            "value": "Storage"
-        },
-        "virtualMachineSize": {
-            "value": "Standard_B2s"
-        },
-        "adminUsername": {
-            "value": "azureuser"
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "value": "eastus"
+    },
+    "networkInterfaceName": {
+      "value": "lesson09452"
+    },
+    "networkSecurityGroupName": {
+      "value": "lesson09-nsg"
+    },
+    "networkSecurityGroupRules": {
+      "value": [
+        {
+          "name": "SSH",
+          "properties": {
+            "priority": 300,
+            "protocol": "TCP",
+            "access": "Allow",
+            "direction": "Inbound",
+            "sourceAddressPrefix": "*",
+            "sourcePortRange": "*",
+            "destinationAddressPrefix": "*",
+            "destinationPortRange": "22"
+          }
         }
+      ]
+    },
+    "subnetName": {
+      "value": "default"
+    },
+    "virtualNetworkName": {
+      "value": "l10-vnet"
+    },
+    "addressPrefixes": {
+      "value": ["10.2.0.0/16"]
+    },
+    "subnets": {
+      "value": [
+        {
+          "name": "default",
+          "properties": {
+            "addressPrefix": "10.2.0.0/24"
+          }
+        }
+      ]
+    },
+    "publicIpAddressName": {
+      "value": "lesson09-ip"
+    },
+    "publicIpAddressType": {
+      "value": "Dynamic"
+    },
+    "publicIpAddressSku": {
+      "value": "Basic"
+    },
+    "virtualMachineName": {
+      "value": "lesson09"
+    },
+    "virtualMachineComputerName": {
+      "value": "lesson09"
+    },
+    "virtualMachineRG": {
+      "value": "l10"
+    },
+    "diskNameSalt": {
+      "value": "20210902194307"
+    },
+    "storageAccountName": {
+      "value": "l10disks"
+    },
+    "storageAccountType": {
+      "value": "Premium_LRS"
+    },
+    "storageAccountKind": {
+      "value": "Storage"
+    },
+    "virtualMachineSize": {
+      "value": "Standard_B2s"
+    },
+    "authenticationType": {
+      "value": "sshPublicKey"
+    },
+    "adminUsername": {
+      "value": "azureuser"
+    },
+    "adminPasswordOrKey": {
+      "value": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDMobZNJTqgjWn/IB5xlilvE4Y+BMYpqkDnGRUcA0g9BYPgrGSQquCES37v2e3JmpfDPHFsaR+CPKlVr2GoVJMMHeRcMJhj50ZWq0hAnkJBhlZVWy8S7dwdGAqPyPmWM2iJDCVMVrLITAJCno47O4Ees7RCH6ku7kU86b1NOanvrNwqTHr14wtnLhgZ0gQ5GV1oLWvMEVg1YFMIgPRkTsSQKWCG5lLqQ45aU/4NMJoUxGyJTL9i8YxMavaB1Z2npfTQDQo9+womZ7SXzHaIWC858gWNl9e5UFyHDnTEDc14hKkf1CqnGJVcCJkmSfmrrHk/CkmF0ZT3whTHO1DhJTtV stramer@contoso"
     }
+  }
 }
