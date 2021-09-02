@@ -50,6 +50,9 @@
     "publicIpAddressName": {
       "value": "lesson09-ip"
     },
+    "dnsLabelPrefix": {
+      "value": "hillel-maslovss"
+    },
     "publicIpAddressType": {
       "value": "Dynamic"
     },
