@@ -17,8 +17,26 @@
     "subnetName": {
       "type": "string"
     },
+    "subnetAddressPrefix": {
+      "type": "string",
+      "metadata": {
+        "description": "Subnet address prefix"
+      }
+    },
     "virtualNetworkName": {
       "type": "string"
+    },
+    "virtualNetworkNewOrExisting": {
+      "type": "string",
+      "metadata": {
+        "description": "Boolean indicating whether the VNet is new or existing"
+      }
+    },
+    "virtualNetworkAddressPrefix": {
+      "type": "string",
+      "metadata": {
+        "description": "VNet address prefix"
+      }
     },
     "publicIpAddressName": {
       "type": "string"
@@ -81,8 +99,11 @@
   "variables": {
     "publicIPAddressName": "[format('{0}PublicIP', parameters('virtualMachineName'))]",
     "nsgId": "[resourceId(resourceGroup().name, 'Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroupName'))]",
-    "vnetId": "[resourceId(resourceGroup().name,'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
-    "subnetRef": "[concat(variables('vnetId'), '/subnets/', parameters('subnetName'))]",
+    "vnetId": {
+      "new": "[resourceId('Microsoft.Network/virtualNetworks',parameters('virtualNetworkName'))]",
+      "existing": "[resourceId(parameters('virtualNetworkResourceGroup'),'Microsoft.Network/virtualNetworks',parameters('virtualNetworkName'))]"
+    },
+    "subnetId": "[concat(variables('vnetId')[parameters('virtualNetworkNewOrExisting')],'/subnets/',parameters('subnetName'))]",
     "storageContainerUri": "[concat(concat('https://', parameters('storageAccountName'), '.blob.core.windows.net/'), 'vhds/')]",
     "linuxConfiguration": {
       "disablePasswordAuthentication": true,
@@ -134,10 +155,24 @@
       "location": "[parameters('location')]"
     },
     {
-      "name": "[parameters('virtualNetworkName')]",
+      "condition": "[equals(parameters('virtualNetworkNewOrExisting'),'new')]",
       "type": "Microsoft.Network/virtualNetworks",
-      "apiVersion": "2020-11-01",
-      "location": "[parameters('location')]"
+      "apiVersion": "2017-09-01",
+      "name": "[parameters('virtualNetworkName')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "addressSpace": {
+          "addressPrefixes": ["[parameters('virtualNetworkAddressPrefix')]"]
+        },
+        "subnets": [
+          {
+            "name": "[parameters('subnetName')]",
+            "properties": {
+              "addressPrefix": "[parameters('subnetAddressPrefix')]"
+            }
+          }
+        ]
+      }
     },
     {
       "name": "[parameters('publicIpAddressName')]",

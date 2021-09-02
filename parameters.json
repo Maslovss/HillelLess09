@@ -28,11 +28,21 @@
         }
       ]
     },
+    "virtualNetworkName": {
+      "value": "lesson9VNet"
+    },
+    "virtualNetworkNewOrExisting": {
+      "value": "existing"
+    },
+    "virtualNetworkAddressPrefix": {
+        "value": "10.0.0.0/16"
+    },
     "subnetName": {
       "value": "lesson9subnet"
     },
-    "virtualNetworkName": {
-      "value": "lesson9VNet"
+    "subnetAddressPrefix": {
+        "value": "10.0.0.0/24"
+      }
     },
     "publicIpAddressName": {
       "value": "lesson09-ip"
