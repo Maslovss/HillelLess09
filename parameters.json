@@ -9,7 +9,7 @@
       "value": "lesson09452"
     },
     "networkSecurityGroupName": {
-      "value": "lesson09-nsg"
+      "value": "lesson9sg"
     },
     "networkSecurityGroupRules": {
       "value": [
@@ -29,23 +29,10 @@
       ]
     },
     "subnetName": {
-      "value": "default"
+      "value": "lesson9subnet"
     },
     "virtualNetworkName": {
-      "value": "l10-vnet"
-    },
-    "addressPrefixes": {
-      "value": ["10.2.0.0/16"]
-    },
-    "subnets": {
-      "value": [
-        {
-          "name": "default",
-          "properties": {
-            "addressPrefix": "10.2.0.0/24"
-          }
-        }
-      ]
+      "value": "lesson9VNet"
     },
     "publicIpAddressName": {
       "value": "lesson09-ip"
@@ -72,7 +59,7 @@
       "value": "20210902194307"
     },
     "storageAccountName": {
-      "value": "l10disks"
+      "value": "lesson9sa"
     },
     "storageAccountType": {
       "value": "Premium_LRS"
