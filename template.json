@@ -104,7 +104,7 @@
       "existing": "[resourceId(resourceGroup().name,'Microsoft.Network/virtualNetworks',parameters('virtualNetworkName'))]"
     },
     "subnetId": "[concat(variables('vnetId')[parameters('virtualNetworkNewOrExisting')],'/subnets/',parameters('subnetName'))]",
-    "storageAccountId": "[resourceId(parameters('omsWorkSpaceResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]",
+    "storageAccountId": "[resourceId(resourceGroup().name, 'Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]",
     "storageContainerUri": "[concat(concat('https://', parameters('storageAccountName'), '.blob.core.windows.net/'), 'vhds/')]",
     "linuxConfiguration": {
       "disablePasswordAuthentication": true,
