@@ -35,14 +35,13 @@
       "value": "existing"
     },
     "virtualNetworkAddressPrefix": {
-        "value": "10.0.0.0/16"
+      "value": "10.0.0.0/16"
     },
     "subnetName": {
       "value": "lesson9subnet"
     },
     "subnetAddressPrefix": {
-        "value": "10.0.0.0/24"
-      }
+      "value": "10.0.0.0/24"
     },
     "publicIpAddressName": {
       "value": "lesson09-ip"
